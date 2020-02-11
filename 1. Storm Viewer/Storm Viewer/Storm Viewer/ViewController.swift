@@ -34,17 +34,19 @@ class ViewController: UITableViewController {
                 pictures.append(item)
             }
         }
-        
-        print(pictures)
     }
     
+    //Queremos saber ao certo quantas de quantas linhas vamos precisar.
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return pictures.count
+        //Retornamos o número exato de fotografias que queremos mostrar
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+            
+        //vamos reutilizar uma célula que já não se encontra no ecrã.
+        //Precisamos do identificador para saber qual é que temos que utilizar.
         let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath)
         cell.textLabel?.text = pictures[indexPath.row]
         
@@ -52,11 +54,16 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //indexPath.row diz qual foi a célula em que carregamos.
+        //print(indexPath.row)
         
+        //Instanciamos um novo View Controller para mostrar a imagem em que clicamos.
         if let viewController = storyboard?.instantiateViewController(identifier: "Detail") as? DetailViewController {
             viewController.selectedImage = pictures[indexPath.row]
             navigationController?.pushViewController(viewController, animated: true)
         }
+        
+        //Para colocarmos a Table View dentro de um navigationController clicamos no View Controller de Table Cell e vamos a Editor -> Embed in -> Navigation Controller.
     }
 }
 
