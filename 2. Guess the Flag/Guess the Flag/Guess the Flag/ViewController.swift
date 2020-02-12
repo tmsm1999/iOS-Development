@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     var countries = [String]()
     var score: Int = 0
     var correctAnswer: Int = 0
+    var questionsAsked: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,19 +61,28 @@ class ViewController: UIViewController {
         
         //O .normal diz para que estado é que o botão deve ser mudado. O .normal significa o "estado normal do botão."
         
-        title = countries[correctAnswer].uppercased()
+        title = "Current score = \(score) | Guess next: " + countries[correctAnswer].uppercased()
+    }
+    
+    //Handler para quando o jogo termina.
+    func finalScreen(action: UIAlertAction!) {
+        ButtonOne.isHidden = true
+        ButtonTwo.isHidden = true
+        ButtonThree.isHidden = true
+        
+        title = "Final score = \(score)"
     }
     
     //Triggers code
     @IBAction func buttonTapped(_ sender: UIButton) {
-        var result: String
+        var result: Int = 0
         
         if sender.tag == correctAnswer {
-            result = "Correct"
+            result = 1
             score += 1
         }
         else {
-            result = "Wrong"
+            result = 0
             score -= 1
             
             if score < 0 {
@@ -80,11 +90,30 @@ class ViewController: UIViewController {
             }
         }
         
-        //Cria um alerta
-        let alertView = UIAlertController(title: result, message: "Your score is \(score).", preferredStyle: .alert)
+        questionsAsked += 1
         
-        alertView.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
-        
-        present(alertView, animated: true)
+        if questionsAsked == 10 {
+            
+            let finalAlertView = UIAlertController(title: "Game Finished", message: "Your final score is \(score).", preferredStyle: .alert)
+            
+            finalAlertView.addAction(UIAlertAction(title: "Continue", style: .default, handler: finalScreen))
+            
+            present(finalAlertView, animated: true)
+        }
+        else {
+            //Cria um alerta
+            let alertView: UIAlertController!
+            
+            if result == 1 {
+                alertView = UIAlertController(title: "Correct!", message: "Your score is \(score).", preferredStyle: .alert)
+            }
+            else {
+                alertView = UIAlertController(title: "Wrong! That is the flag of " + countries[sender.tag].uppercased(), message: "Your score is \(score).", preferredStyle: .alert)
+            }
+           
+           alertView.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
+           
+           present(alertView, animated: true)
+        }
     }
 }
