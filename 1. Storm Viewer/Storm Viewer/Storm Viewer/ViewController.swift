@@ -34,6 +34,8 @@ class ViewController: UITableViewController {
                 pictures.append(item)
             }
         }
+        
+        pictures.sort()
     }
     
     //Queremos saber ao certo quantas de quantas linhas vamos precisar.
@@ -59,7 +61,11 @@ class ViewController: UITableViewController {
         
         //Instanciamos um novo View Controller para mostrar a imagem em que clicamos.
         if let viewController = storyboard?.instantiateViewController(identifier: "Detail") as? DetailViewController {
+            
             viewController.selectedImage = pictures[indexPath.row]
+            viewController.index = indexPath.row + 1
+            viewController.totalPics = pictures.count
+            
             navigationController?.pushViewController(viewController, animated: true)
         }
         
@@ -67,3 +73,11 @@ class ViewController: UITableViewController {
     }
 }
 
+//For this project, your challenges are:
+
+//1 - Use Interface Builder to select the text label inside your table view cell and adjust its font size to something larger – experiment and see what looks good. -- DONE
+
+//2 - In your main table view, show the image names in sorted order, so “nssl0033.jpg” comes before “nssl0034.jpg”. -- DONE
+
+//3 - Rather than show image names in the detail title bar, show “Picture X of Y”, where Y is the total number of images and X is the selected picture’s position in the array. Make sure you count from 1 rather than 0. --DONE
+ 

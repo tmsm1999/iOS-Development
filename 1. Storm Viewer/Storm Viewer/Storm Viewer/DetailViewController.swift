@@ -14,12 +14,14 @@ class DetailViewController: UIViewController {
     
     @IBOutlet var ImageView: UIImageView!
     var selectedImage: String?
+    var index: Int = 0
+    var totalPics: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Mostra o título da imagem.
-        title = selectedImage
+        title = "Picture \(index) of \(totalPics)"
         
         //Quando carregamos numa imagem ela vai aparecer na DetailViewController. Aqui não queremos que o título esteja grande.
         navigationItem.largeTitleDisplayMode = .never
