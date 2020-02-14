@@ -47,6 +47,8 @@ class ViewController: UIViewController {
         ButtonThree.tag = 2
         
         askQuestion(action: nil)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(showScore))
     }
     
 //    Swift wants the method to accept a UIAlertAction parameter saying which UIAlertAction was tapped.
@@ -61,7 +63,7 @@ class ViewController: UIViewController {
         
         //O .normal diz para que estado é que o botão deve ser mudado. O .normal significa o "estado normal do botão."
         
-        title = "Current score = \(score) | Guess next: " + countries[correctAnswer].uppercased()
+        title = "Guess next: " + countries[correctAnswer].uppercased()
     }
     
     //Handler para quando o jogo termina.
@@ -71,6 +73,15 @@ class ViewController: UIViewController {
         ButtonThree.isHidden = true
         
         title = "Final score = \(score)"
+    }
+    
+    @objc func showScore() {
+        
+        let scoreAlert = UIAlertController(title: "Current Score", message: "Your current score is \(score).", preferredStyle: .alert);
+        
+        scoreAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: nil))
+        
+        present(scoreAlert, animated: true)
     }
     
     //Triggers code
