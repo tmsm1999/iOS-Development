@@ -25,6 +25,8 @@ class ViewController: UITableViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(promptForAnswer))
         
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "New Game", style: .plain, target: self, action: #selector(startGame))
+        
         //if let permite verificar se o bundle.main.url não é nil.
         if let startWordsURL = Bundle.main.url(forResource: "start", withExtension: "txt") {
             
@@ -40,7 +42,7 @@ class ViewController: UITableViewController {
         startGame()
     }
     
-    func startGame() {
+    @objc func startGame() {
         title = allWords.randomElement() //Palavra que o jogador tem que usar para encontrar sub-palavras.
         usedWords.removeAll(keepingCapacity: true)
         tableView.reloadData()
@@ -87,9 +89,6 @@ class ViewController: UITableViewController {
         
         let lowerAnswer = answer.lowercased()
         
-        var errorTitle: String
-        var errorMessage: String
-        
         if(isPossible(word: lowerAnswer) && isOriginal(word: lowerAnswer) && isReal(word: lowerAnswer)) {
             
             usedWords.insert(lowerAnswer, at: 0)
@@ -98,18 +97,11 @@ class ViewController: UITableViewController {
             tableView.insertRows(at: [indexPath], with: .automatic)
             //.automatic = animação standard para esta modificação.
             
-            errorTitle = "Good Job!"
-            errorMessage = "Keep it going..."
+            showMessage(errorTitle: "Good Job!", errorMessage: "Keep it going...")
         }
         else {
-            errorTitle = "Invalid Word!"
-            errorMessage = "Pay attention to the word above..."
+            showMessage(errorTitle: "Invalid Word!", errorMessage: "Pay attention to the word above...")
         }
-        
-        let alertView = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
-        alertView.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
-        present(alertView, animated: true)
-        
     }
     
     func isPossible(word: String) -> Bool {
@@ -143,11 +135,25 @@ class ViewController: UITableViewController {
         //Precisamos de fazer assim por causa de backwards compatibility.
         let range = NSRange(location: 0, length: word.utf16.count)
         
+        guard let originalWord = title?.lowercased() else {
+            return false;
+        }
+        
+        if word == originalWord || range.length < 3 {
+            return false
+        }
         
         let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
         
         return misspelledRange.location == NSNotFound
         //Retorna true quando não existiram erros.
+    }
+    
+    func showMessage(errorTitle: String, errorMessage: String) {
+        
+        let alertView = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
+        alertView.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        present(alertView, animated: true, completion: nil)
     }
 
 }
