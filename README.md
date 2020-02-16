@@ -7,3 +7,7 @@
 3 - The Social Media project is an extention of the Storm Viewer project. With it I learned about UIBarButtonItem and UIActivityViewController.
 
 4 - Easy Browser is a simple app that allows the user to load a few web sites. With this project I learned about loadView(), WKWebView, Delegation, URL, URL Request, UIToolbar, UIProgressView and Key-Value observing. 
+
+5 - Word Scramble is a game where the player has to form other words from an original word given as title in the view controller. The words have to obey certain rules. With this project I learned about Reloading table views, Inserting new rows, Text Input In Alerts, Strings and UTF-16, Closures and NSRange. 
+
+
