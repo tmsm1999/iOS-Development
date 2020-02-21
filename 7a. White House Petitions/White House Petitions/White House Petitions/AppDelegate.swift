@@ -10,11 +10,13 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    var window: UIWindow?
+    //Window em que a aplicação está a ser executada.
 
-
-
+    //Função chamada pelo iOS quando a app termina de carregar.
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
         return true
     }
 

@@ -14,10 +14,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+
         guard let _ = (scene as? UIWindowScene) else { return }
+        
+        if let tabBarController = window?.rootViewController as? UITabBarController {
+            //Neste projeto, se repararmos no storyboard o primeiro ecrã que vemos faz referência a um tab bar controller, por isso está tudo dentro dele.
+            
+            //Por isso é que o default view controller é um tab bar controller.
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let viewController = storyboard.instantiateViewController(identifier: "NavController")
+            
+            //Adicionamos um tabBarItem ao view controller.
+            viewController.tabBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 1)
+            
+            //The default value of this property is nil. When configuring a tab bar controller, you can use this property to specify the content for each tab of the tab bar interface.
+            tabBarController.viewControllers?.append(viewController)
+            
+        }
+        else {
+            print("Exits with error.")
+        }
+        
+        return
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -59,28 +59,9 @@
                     <view key="view" contentMode="scaleToFill" id="sT0-pX-9EN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8VR-XI-ik9">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="8VR-XI-ik9" firstAttribute="leading" secondItem="HMw-0F-fCv" secondAttribute="leading" id="8Y3-iL-0vN"/>
-                            <constraint firstItem="HMw-0F-fCv" firstAttribute="trailing" secondItem="8VR-XI-ik9" secondAttribute="trailing" id="FzD-vt-Kjj"/>
-                            <constraint firstItem="8VR-XI-ik9" firstAttribute="top" secondItem="HMw-0F-fCv" secondAttribute="top" constant="20" id="vaq-3P-Phu"/>
-                            <constraint firstItem="HMw-0F-fCv" firstAttribute="bottom" secondItem="8VR-XI-ik9" secondAttribute="bottom" id="yXC-Zc-SIn"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="HMw-0F-fCv"/>
                     </view>
-                    <connections>
-                        <outlet property="PetitionDetailsOutlet" destination="8VR-XI-ik9" id="ONX-AX-q3r"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5v3-BP-DBh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

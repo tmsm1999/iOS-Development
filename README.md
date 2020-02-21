@@ -12,4 +12,6 @@
 
 6 - This was a technique project where I learned Auto Layout by coding in Swift. I learned about Auto Layout constraints, visual formatting language and anchors!
 
+7 - With this app I learned how to decode data from JSON files with codable and parse its content. I also learned how to use UITabBarController and UIStoryboard. 
+
 
