@@ -1,0 +1,8 @@
+EI|NS|TE|IN: Pai da Teoria da Relatividade
+TUR|ING: Pai da Ciência de Computadores
+TER|RA: Nome do nosso Planeta
+STE|VE: Primeiro nome do fundador da Apple
+MAC|INT|OSH: Computador apresentado pela Apple
+FA|CEB|OOK: Rede Social criada por Mark Zuckerberg
+AL|GOR|IT|MO: Conjunto de instruções dadas a um computador
+

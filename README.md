@@ -14,4 +14,6 @@
 
 7 - With this app I learned how to decode data from JSON files with codable and parse its content. I also learned how to use UITabBarController and UIStoryboard. 
 
+8 - This is a game where the user is given a description and has to guess the word. With this project I learned how to create an graphical user interface programatically. I also learned about addTarget(), enumerated(), joined() and replacingOcurrences().
+
 
