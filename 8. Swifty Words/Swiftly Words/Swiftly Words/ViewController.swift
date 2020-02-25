@@ -151,7 +151,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
         
-        loadGameLevel()
+        performSelector(inBackground: #selector(loadGameLevel), with: nil)
     }
     
     @objc func letterButtonTapped(_ sender: UIButton) {
@@ -215,7 +215,7 @@ class ViewController: UIViewController {
         activatedButtons.removeAll(keepingCapacity: true)
     }
     
-    func loadGameLevel() {
+    @objc func loadGameLevel() {
         
         var clueString = ""
         var solutionString = ""
@@ -246,15 +246,18 @@ class ViewController: UIViewController {
             }
         }
         
-        cluesLabel.text = clueString.trimmingCharacters(in: .whitespacesAndNewlines)
-        answerLabel.text = solutionString.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        letterButtons.shuffle()
-        
-        if letterButtons.count == letterBits.count {
+        DispatchQueue.main.async {
+            [weak self] in
             
-            for index in 0 ... letterBits.count - 1 {
-                letterButtons[index].setTitle(letterBits[index], for: .normal)
+            self?.cluesLabel.text = clueString.trimmingCharacters(in: .whitespacesAndNewlines)
+            self?.answerLabel.text = solutionString.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            self?.letterButtons.shuffle()
+            if self?.letterButtons.count == letterBits.count {
+                
+                for index in 0 ... letterBits.count - 1 {
+                    self?.letterButtons[index].setTitle(letterBits[index], for: .normal)
+                }
             }
         }
     }

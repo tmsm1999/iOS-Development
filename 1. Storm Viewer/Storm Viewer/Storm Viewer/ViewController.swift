@@ -19,6 +19,11 @@ class ViewController: UITableViewController {
         title = "Storm Viewer"
         navigationController?.navigationBar.prefersLargeTitles = true
         
+        performSelector(inBackground: #selector(loadPictures), with: nil)
+    }
+    
+    @objc func loadPictures() {
+        
         let fileManager = FileManager.default
         //Constante que nos permite trabalhar com o File System
         
@@ -36,6 +41,11 @@ class ViewController: UITableViewController {
         }
         
         pictures.sort()
+        
+        DispatchQueue.main.async {
+            [weak self] in
+            self?.tableView.reloadData()
+        }
     }
     
     //Queremos saber ao certo quantas de quantas linhas vamos precisar.

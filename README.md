@@ -16,4 +16,6 @@
 
 8 - This is a game where the user is given a description and has to guess the word. With this project I learned how to create an graphical user interface programatically. I also learned about addTarget(), enumerated(), joined() and replacingOcurrences().
 
+9 - In this project I improved the user interface loading time of project 7 using multithreading. I learned about GCD (Grand Central Dispatch), performSelector() and Quality Of Service.
+
 

@@ -1,0 +1,10 @@
+Hamster: Pet
+Motorbike: Vehicle
+Whiteboard: Object
+Baseball: Sport
+Computer: Object
+Programmer: Profession
+Youtuber: Profession
+Australia: Country
+Rhinoceros: Animal
+Pancakes: Food
