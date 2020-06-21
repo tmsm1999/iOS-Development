@@ -19,6 +19,20 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         // Do any additional setup after loading the view.
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewPerson))
+        
+        let defaults = UserDefaults.standard
+        if let savedPeople = defaults.object(forKey: "people") as? Data {
+            
+            let jsonDecoder = JSONDecoder()
+            
+            // [Person].self = Attemp to create an array of person from Data.
+            do {
+                people = try jsonDecoder.decode([Person].self, from: savedPeople)
+            }
+            catch {
+                print("Failed to load people.")
+            }
+        }
     }
     
     //Estes dois métodos funcionam praticamente da mesma forma em relação ao que tinhamos na Table View.
@@ -73,6 +87,8 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         
         let person = Person(name: "Unknown", image: imageName)
         people.append(person)
+        save()
+        
         collectionView.reloadData()
         
         dismiss(animated: true)
@@ -105,11 +121,28 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
             }
         
             person.name = newName
+            self?.save()
+            
             self?.collectionView.reloadData()
         })
         
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(alertController, animated: true)
+    }
+    
+    func save() {
+        
+        let jsonEncoder = JSONEncoder()
+        
+        if let savedData = try? jsonEncoder.encode(people) {
+            
+            let defaults = UserDefaults.standard
+            defaults.set(savedData, forKey: "people")
+        }
+        else {
+            
+            print("Failed to save.")
+        }
     }
 }
 

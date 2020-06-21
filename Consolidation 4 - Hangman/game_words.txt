@@ -1,10 +1,6 @@
-Hamster: Pet
-Motorbike: Vehicle
-Whiteboard: Object
-Baseball: Sport
-Computer: Object
-Programmer: Profession
-Youtuber: Profession
-Australia: Country
-Rhinoceros: Animal
-Pancakes: Food
+Portugal:Country
+Hamster:Pet
+Tennis:Sport
+Apple:Company
+Computer:Object
+Queen:Band

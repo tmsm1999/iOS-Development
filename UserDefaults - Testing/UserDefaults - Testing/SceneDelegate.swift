@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  Names to Faces
+//  UserDefaults - Testing
 //
-//  Created by Tomás Santiago on 03/05/2020.
+//  Created by Tomás Santiago on 21/06/2020.
 //  Copyright © 2020 Tomás Santiago. All rights reserved.
 //
 
